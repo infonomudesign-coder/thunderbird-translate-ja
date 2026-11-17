@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+  "name": "英語→日本語 翻訳",
+  "version": "1.0.0",
+  "description": "表示中のメールの件名と本文を、英語から日本語に翻訳します。",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "translate-en-ja@local.example",
+      "strict_min_version": "115.0"
+    }
+  },
+  "permissions": ["messagesRead", "https://translate.googleapis.com/*"],
+  "message_display_action": {
+    "default_title": "日本語に翻訳",
+    "default_label": "日本語に翻訳",
+    "default_popup": "popup/popup.html",
+    "default_icon": "icons/icon.svg"
+  },
+  "icons": { "48": "icons/icon.svg" }
+}

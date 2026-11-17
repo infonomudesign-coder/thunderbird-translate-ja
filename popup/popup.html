@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <h1>日本語に翻訳</h1>
+    <div id="target" class="muted"></div>
+  </header>
+
+  <section id="notice" class="notice">
+    「翻訳する」を押すと、このメールの<strong>件名と本文</strong>が外部の翻訳サービス（Google 翻訳の非公式エンドポイント）に送信されます。
+    機密性の高いメールや復号済みの暗号化メールでは使用しないでください。
+  </section>
+
+  <div class="actions">
+    <button id="translate" type="button" disabled>翻訳する</button>
+    <button id="toggle" type="button" hidden>原文を表示</button>
+    <button id="copy" type="button" hidden>訳をコピー</button>
+  </div>
+
+  <div id="status" class="muted" role="status"></div>
+  <div id="error" class="error" role="alert" hidden></div>
+
+  <h2>件名 <span id="subjLabel" class="tag"></span></h2>
+  <div id="subject" class="box"></div>
+
+  <h2>本文 <span id="bodyLabel" class="tag"></span></h2>
+  <div id="body" class="box body"></div>
+
+  <script src="../lib/translate.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
