@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>AI文章作成の設定</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { max-width: 560px; margin: 24px auto; padding: 0 16px; font: 14px/1.7 system-ui, "Hiragino Sans", "Yu Gothic UI", sans-serif; }
+    label { display: block; margin: 14px 0 2px; font-weight: 600; }
+    input[type=password], input[type=text], textarea { width: 100%; box-sizing: border-box; font: inherit; padding: 4px 6px; }
+    .muted { color: GrayText; font-size: 12px; font-weight: normal; }
+    .notice { margin: 12px 0; padding: 8px 10px; border-left: 3px solid #d97706; background: color-mix(in srgb, #d97706 12%, transparent); font-size: 13px; }
+    button { padding: 5px 14px; font: inherit; margin-right: 8px; }
+    #msg { margin-top: 10px; min-height: 1.5em; }
+  </style>
+</head>
+<body>
+  <h1>AI文章作成の設定</h1>
+  <div class="notice">
+    APIキーは、このパソコンの Thunderbird のプロファイル内に<strong>暗号化されずに</strong>保存されます。共有パソコンでは使わないでください。
+    キーは Anthropic（api.anthropic.com）への送信にのみ使われます。不要になったら下の「キーを削除」で消せます。
+  </div>
+  <label for="apiKey">Anthropic APIキー <span class="muted">（console.anthropic.com で取得）</span></label>
+  <input id="apiKey" type="password" autocomplete="off" placeholder="sk-ant-...">
+  <label for="model">モデルID <span class="muted">（空欄なら既定: <span id="def"></span>）</span></label>
+  <input id="model" type="text" autocomplete="off">
+  <label for="memo">差出人・署名メモ <span class="muted">（任意。例: 野村 誠／Nomu-Design。AIへの送信内容に含まれます）</span></label>
+  <textarea id="memo" rows="3"></textarea>
+  <p>
+    <button id="save" type="button">保存</button>
+    <button id="del" type="button">キーを削除</button>
+  </p>
+  <div id="msg" role="status"></div>
+  <script src="../lib/ai.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

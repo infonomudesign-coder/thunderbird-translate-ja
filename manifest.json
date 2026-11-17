@@ -1,20 +1,36 @@
 {
   "manifest_version": 2,
-  "name": "英語→日本語 翻訳",
-  "version": "1.0.0",
-  "description": "表示中のメールの件名と本文を、英語から日本語に翻訳します。",
+  "name": "英語→日本語 翻訳 + AI文章作成",
+  "version": "1.1.0",
+  "description": "メールの件名・本文を英語から日本語に翻訳し、AIで件名・本文・返信文を作成します。",
   "browser_specific_settings": {
     "gecko": {
       "id": "translate-en-ja@local.example",
       "strict_min_version": "115.0"
     }
   },
-  "permissions": ["messagesRead", "https://translate.googleapis.com/*"],
+  "permissions": [
+    "messagesRead",
+    "compose",
+    "storage",
+    "https://translate.googleapis.com/*",
+    "https://api.anthropic.com/*"
+  ],
   "message_display_action": {
     "default_title": "日本語に翻訳",
     "default_label": "日本語に翻訳",
     "default_popup": "popup/popup.html",
     "default_icon": "icons/icon.svg"
+  },
+  "compose_action": {
+    "default_title": "AIで文章作成",
+    "default_label": "AIで文章作成",
+    "default_popup": "compose/compose.html",
+    "default_icon": "icons/ai.svg"
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
   },
   "icons": { "48": "icons/icon.svg" }
 }

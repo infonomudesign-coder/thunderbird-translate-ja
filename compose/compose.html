@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="compose.css">
+</head>
+<body>
+  <h1>AIで文章作成</h1>
+
+  <section id="nokey" class="notice warn" hidden>
+    APIキーが未設定です。<button id="openOptions" type="button">設定を開く</button>
+  </section>
+
+  <fieldset id="modes">
+    <legend>やりたいこと</legend>
+    <label><input type="radio" name="mode" value="subject" checked> 件名を考える</label>
+    <label><input type="radio" name="mode" value="body"> 本文を考える</label>
+    <label><input type="radio" name="mode" value="reply"> 返信を考える</label>
+    <label><input type="radio" name="mode" value="polish"> 今の本文を整える</label>
+  </fieldset>
+  <div id="modeHint" class="muted"></div>
+
+  <label class="field">要点メモ（伝えたいこと・条件など）
+    <textarea id="notes" rows="4" placeholder="例: 来週の打ち合わせ日程を相談したい。火曜か木曜の午後が希望。"></textarea>
+  </label>
+
+  <div class="row">
+    <label>トーン
+      <select id="tone">
+        <option value="polite">丁寧（ビジネス）</option>
+        <option value="casual">ややカジュアル</option>
+        <option value="concise">簡潔</option>
+      </select>
+    </label>
+    <label>言語
+      <select id="lang"><option value="ja">日本語</option><option value="en">英語</option></select>
+    </label>
+  </div>
+
+  <section id="disclosure" class="notice">
+    <strong>「作る」を押すと、次の内容が Anthropic（Claude の API）に送信されます。</strong>
+    <ul id="sentList"></ul>
+    <div id="truncNote" class="muted" hidden></div>
+    添付ファイルは送りません。機密性の高い内容では使わないでください。
+  </section>
+
+  <div class="actions">
+    <button id="generate" type="button" disabled>作る</button>
+    <button id="cancel" type="button" hidden>中止</button>
+  </div>
+
+  <div id="status" class="muted" role="status"></div>
+  <div id="error" class="error" role="alert" hidden></div>
+
+  <section id="result" hidden>
+    <h2>結果 <span class="muted">（確認してから挿入してください。AIの文面は誤りを含むことがあります）</span></h2>
+    <div id="warn" class="notice warn" hidden></div>
+    <div id="subjects"></div>
+    <div id="text" class="box"></div>
+    <div class="actions">
+      <button id="insert" type="button" hidden>本文の先頭に挿入</button>
+      <button id="polishApply" type="button" hidden>本文全体を置き換える</button>
+    </div>
+    <div id="confirm" class="notice warn" hidden>
+      <span id="confirmMsg"></span>
+      <button id="confirmYes" type="button">実行する</button>
+      <button id="confirmNo" type="button">やめる</button>
+    </div>
+  </section>
+
+  <script src="../lib/translate.js"></script>
+  <script src="../lib/ai.js"></script>
+  <script src="compose.js"></script>
+</body>
+</html>
